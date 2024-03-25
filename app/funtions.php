@@ -2,16 +2,19 @@
 use App\Models\User;
 use Symfony\Component\Routing\RouteCollection;
 
-function view($name, $model='') {
+function view($name, $model = '')
+{
     require_once APP_ROOT . '/views/layout.view.php';
 }
 
-function redirect($url) {
+function redirect($url)
+{
     header("Location: $url");
     die();
 }
 
-function getPath(RouteCollection $routes, $name) {
+function getPath(RouteCollection $routes, $name)
+{
     return $routes->get($name)->getPath();
 }
 
@@ -27,29 +30,72 @@ function connect($source = DB)
     }
 }
 
-function debug_to_console($data) {
+function debug_to_console($data)
+{
     $output = $data;
     if (is_array($output))
         $output = implode(',', $output);
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
 
-function isLoggedIn() {
-    if (!isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] == false)
+function isLoggedIn()
+{
+    if (!isset ($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] == false)
         return false;
     return true;
 }
 
-function permissionCheck() {
-    
+function permissionCheck()
+{
+
 }
 
-function startSession() {
+function startSession()
+{
     session_start();
     $_SESSION['showNav'] = true;
 }
 
-function getSessionUser() {
+function getOrderStatusClass($status)
+{
+    switch ($status) {
+        case "1":
+        case "3":
+            echo "color--btn";
+            break;
+        case "2":
+        case "4":
+            echo "color-success";
+            break;
+        case "5":
+            echo "color--red";
+            break;
+        default:
+            echo "color--btn";
+    }
+}
+
+function getOrderStatusClassAdmin($status)
+{
+    switch ($status) {
+        case "1":
+        case "3":
+            echo "badge-warning-lighten";
+            break;
+        case "2":
+        case "4":
+            echo "badge-success-lighten";
+            break;
+        case "5":
+            echo "badge-danger-lighten";
+            break;
+        default:
+            echo "badge-info-lighten";
+    }
+}
+
+function getSessionUser()
+{
     $user = new User();
     $user = unserialize($_SESSION['user']);
     return $user;
