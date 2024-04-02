@@ -24,16 +24,16 @@ class AdminController {
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
   public function indexBrandAction(RouteCollection $routes, Request $request) {
-    startSession();
+    // startSession();
     // $user = new User();
     // $user = unserialize($_SESSION['user']);
     // if (!in_array('Br_View', $user->getPermissions())) {
     //   redirect(getPath($routes, 'homepage'));
     //   die();
     // }
-    $name = 'brand/index';    
-    $BrandList = new Brands();
-    $BrandList->getAllBrands();
+    $name = '/brand/index';    
+    // $BrandList = new Brands();
+    // $BrandList->getAllBrands();
     require_once APP_ROOT . '/views/admin/layout.view.php';
   }
 
