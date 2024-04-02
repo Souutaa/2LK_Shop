@@ -400,7 +400,7 @@ class Product
     $this->productLine = $data['product_line'];
     $this->productName = $data['product_name'];
     $this->price = $data['price'];
-    $this->discount = empty ($data['discount']) ?? 0;
+    $this->discount = empty($data['discount']) ?? 0;
     $this->createdBy = $data['userID'];
     $this->brandID = $data['brand'];
     $this->category = $data['category'];
@@ -458,7 +458,7 @@ class Product
 
       $statement = $db->prepare($sql);
       foreach ($data['information'] as $info) {
-        if (empty ($data['information'])) {
+        if (empty($data['information'])) {
           continue;
         }
         $statement->execute([
@@ -472,7 +472,7 @@ class Product
       $statement = $db->prepare($sql);
       try {
         foreach ($data['serial_number'] as $serialNumber) {
-          if (empty ($data['serial_number'])) {
+          if (empty($data['serial_number'])) {
             continue;
           }
           $statement->execute([
@@ -595,7 +595,7 @@ class Product
     $countCurrentImgStm->execute([
       ":productLine" => $this->productLine
     ]);
-    if ($countCurrentImgStm->fetchColumn() > (isset ($data['oldImage']) ? count($data['oldImage']) : 0)) {
+    if ($countCurrentImgStm->fetchColumn() > (isset($data['oldImage']) ? count( $data['oldImage']) : 0)) {
       // clean up current images
       $cleanImageSql = "DELETE FROM `productimage` WHERE `productimage`.`ProductLine` = :productLine";
 
@@ -604,10 +604,10 @@ class Product
         ":productLine" => $this->productLine
       ]);
 
-      if (isset ($data['oldImage'])) {
+      if (isset($data['oldImage'])) {
         // update image
         $productImgSql = "INSERT INTO `productimage` (`ImageID`, `ProductLine`, `imgPath`) VALUES (NULL, :productLine, :imgPath)";
-
+  
         $productImgStm = $db->prepare($productImgSql);
         foreach ($data['oldImage'] as $image) {
           $productImgStm->execute([
@@ -638,7 +638,7 @@ class Product
                 ;";
         $countCurrentImgStm = $db->prepare($countCurrentImgSql);
         $countCurrentImgStm->execute([
-          ":productLine" => $this->productLine
+        ":productLine" => $this->productLine
         ]);
         $index = $key + $countCurrentImgStm->fetchColumn();
 
@@ -667,9 +667,9 @@ class Product
                     `Price` = :price, 
                     `Discount` = :discount, 
                     `BrandID` = :brandID, 
-                    `Category` = :category," .
-      (empty ($this->warrantyId) ? " `warranty_period` = NULL " : " `warranty_period` = '$this->warrantyId' ")
-      . " WHERE `product`.`Product_Line` = :productLine";
+                    `Category` = :category,".
+                    (empty($this->warrantyId) ? " `warranty_period` = NULL " : " `warranty_period` = '$this->warrantyId' ")
+                  ." WHERE `product`.`Product_Line` = :productLine";
     $updateStm = $db->prepare($updateSql);
     $updateStm->execute([
       ':productName' => $this->productName,
@@ -683,9 +683,9 @@ class Product
     $sql = "INSERT INTO `productinfo` (`Info_ID`, `Product_Line`, `Product_Information`) VALUES (NULL, :productLine, :productInfo)";
 
     $statement = $db->prepare($sql);
-    if (isset ($data['information'])) {
+    if (isset($data['information'])) {
       foreach ($data['information'] as $info) {
-        if (empty ($info)) {
+        if (empty($info)) {
           continue;
         }
         $statement->execute([
@@ -705,7 +705,7 @@ class Product
     $statement = $db->prepare($sql);
     try {
       foreach ($data['serial_number'] as $serialNumber) {
-        if (empty ($data['serial_number'])) {
+        if (empty($data['serial_number'])) {
           continue;
         }
         $statement->execute([
