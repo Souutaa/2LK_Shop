@@ -30,3 +30,12 @@ $routes->add('createCategory', new Route(constant('URL_SUBFOLDER') . constant('A
 $routes->add('editCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/edit/{id}', array('controller' => 'CategoryController', 'method' => 'editAction'), array('id' => '([^&]*)')));
 $routes->add('updateCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/saveChange', array('controller' => 'CategoryController', 'method' => 'updateAction'), array()));
 $routes->add('deleteCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/delete/{id}', array('controller' => 'CategoryController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
+
+// PRODUCT
+$routes->add('adminProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT'), array('controller' => 'AdminController', 'method' => 'indexProductAction'), array()));
+$routes->add('createProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/create', array('controller' => 'ProductController', 'method' => 'createProduct'), array()));
+$routes->add('getProductDetail', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/detail/{id}', array('controller' => 'ProductController', 'method' => 'getProductDetail'), array('id' => '([^&]*)')));
+$routes->add('editProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/edit/{id}', array('controller' => 'ProductController', 'method' => 'editAction'), array('id' => '([^&]*)')));
+$routes->add('updateProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/saveChange', array('controller' => 'ProductController', 'method' => 'updateAction'), array()));
+$routes->add('addQty', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/addQty/{id}', array('controller' => 'ProductController', 'method' => 'addQtyAction'), array('id' => '([^&]*)')));
+$routes->add('saveQty', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/saveQty', array('controller' => 'ProductController', 'method' => 'saveQtyAction'), array()));
