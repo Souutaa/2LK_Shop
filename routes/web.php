@@ -16,6 +16,7 @@ $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('contr
 $routes->add('login', new Route(constant('URL_SUBFOLDER') . '/login', array('controller' => 'SessionController', 'method' => 'loginAction'), array()));
 $routes->add('logout', new Route(constant('URL_SUBFOLDER') . '/logout', array('controller' => 'SessionController', 'method' => 'logoutAction'), array()));
 $routes->add('register', new Route(constant('URL_SUBFOLDER') . '/register', array('controller' => 'RegisterController', 'method' => 'indexAction')));
+
 // BRAND
 $routes->add('adminBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND'), array('controller' => 'AdminController', 'method' => 'indexBrandAction'), array()));
 $routes->add('createBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/create', array('controller' => 'BrandController', 'method' => 'createBrand'), array()));
@@ -23,3 +24,9 @@ $routes->add('editBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMIN
 $routes->add('updateBrand', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/saveChange', array('controller' => 'BrandController', 'method' => 'updateAction'), array()));
 $routes->add('deleteBrand', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND') . '/delete/{id}', array('controller' => 'BrandController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
 
+// CATEGORY
+$routes->add('adminCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY'), array('controller' => 'AdminController', 'method' => 'indexCategoryAction'), array()));
+$routes->add('createCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/create', array('controller' => 'CategoryController', 'method' => 'createCategory'), array()));
+$routes->add('editCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/edit/{id}', array('controller' => 'CategoryController', 'method' => 'editAction'), array('id' => '([^&]*)')));
+$routes->add('updateCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/saveChange', array('controller' => 'CategoryController', 'method' => 'updateAction'), array()));
+$routes->add('deleteCategory', new Route(constant('URL_SUBFOLDER') . constant('ADMINCATEGORY') . '/delete/{id}', array('controller' => 'CategoryController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
