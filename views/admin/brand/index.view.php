@@ -179,7 +179,7 @@ $(document).ready(function () {
       var brandId = button.data('brand-id')
       $.ajax({
         type: 'get',
-        url: `/2LKShop/admin/brand/edit/${brandId}`,
+        url: `/2LK_Shop/admin/brand/edit/${brandId}`,
         success: function (res) {
           $('#editModal').html(res);
         }

@@ -1,15 +1,15 @@
 const imgSlide = [
   {
-    imgPath: "/2LKShop/public/images/banner/banner_2.png",
+    imgPath: "/2LK_Shop/public/images/banner/banner_2.png",
   },
   {
-    imgPath: "/2LKShop/public/images/banner/banner_1.png",
+    imgPath: "/2LK_Shop/public/images/banner/banner_1.png",
   },
   {
-    imgPath: "/2LKShop/public/images/banner/banner_1.png",
+    imgPath: "/2LK_Shop/public/images/banner/banner_1.png",
   },
   {
-    imgPath: "/2LKShop/public/images/banner/banner_2.png",
+    imgPath: "/2LK_Shop/public/images/banner/banner_2.png",
   },
 ];
 
@@ -50,14 +50,14 @@ function renderSlide(slideIndex) {
       slideIndex - 1 < 0 ? slides.length - 1 : slideIndex - 1
     })'>
         <use
-            xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-chevron-left"
+            xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-chevron-left"
         ></use>
     </svg>
     <svg class="arrow__item" onclick='handleChangeSlide(${
       slideIndex + 1 > slides.length - 1 ? 0 : slideIndex + 1
     })'>
         <use
-            xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-chevron-right"
+            xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-chevron-right"
         ></use>
     </svg>
       `;
