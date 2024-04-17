@@ -6,16 +6,23 @@ use Symfony\Component\Routing\RouteCollection;
 // Routes system
 $routes = new RouteCollection();
 
+$routes->add('user', new Route(constant('URL_SUBFOLDER') . '/user/uploadimg', array('controller' => 'UserController', 'method' => 'updateUserAvatar'), array()));
 
 $routes->add('product', new Route(constant('URL_SUBFOLDER') . '/product/{id}', array('controller' => 'ProductController', 'method' => 'showAction'), array('id' => '[0-9]+')));
 
-$routes->add('admin', new Route(constant('URL_SUBFOLDER') . '/admin', array('controller' => 'AdminController', 'method' => 'indexHomeAction'), array()));
-
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method' => 'indexAction'), array()));
+$routes->add('getCategory', new Route(constant('URL_SUBFOLDER') . '/getCategory', array('controller' => 'PageController', 'method' => 'changeCategory'), array()));
+$routes->add('search', new Route(constant('URL_SUBFOLDER') . '/search/{searchStr}', array('controller' => 'PageController', 'method' => 'searchAction'), array('searchStr' => '([^&]*)')));
+$routes->add('viewProducts', new Route(constant('URL_SUBFOLDER') . '/view/product', array('controller' => 'PageController', 'method' => 'viewProduct'), array('searchStr' => '([^&]*)')));
+$routes->add('viewCategory', new Route(constant('URL_SUBFOLDER') . '/view/category/{category}', array('controller' => 'PageController', 'method' => 'viewCategory'), array('category' => '([^&]*)')));
+$routes->add('updateViewCategory', new Route(constant('URL_SUBFOLDER') . '/filter/category', array('controller' => 'PageController', 'method' => 'filterCategory'), array()));
 
 $routes->add('login', new Route(constant('URL_SUBFOLDER') . '/login', array('controller' => 'SessionController', 'method' => 'loginAction'), array()));
 $routes->add('logout', new Route(constant('URL_SUBFOLDER') . '/logout', array('controller' => 'SessionController', 'method' => 'logoutAction'), array()));
 $routes->add('register', new Route(constant('URL_SUBFOLDER') . '/register', array('controller' => 'RegisterController', 'method' => 'indexAction')));
+
+// ADMIN
+$routes->add('admin', new Route(constant('URL_SUBFOLDER') . '/admin', array('controller' => 'AdminController', 'method' => 'indexHomeAction'), array()));
 
 // BRAND
 $routes->add('adminBrands', new Route(constant('URL_SUBFOLDER') . constant('ADMINBRAND'), array('controller' => 'AdminController', 'method' => 'indexBrandAction'), array()));
