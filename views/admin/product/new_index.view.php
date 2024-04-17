@@ -50,7 +50,7 @@
                 <?php foreach ($productList->productList as $product): ?>
                     <tr>
                       <td>
-                        <img src="/2LK_SHOP/public/images/thumbNail/<?php echo $product->getThumbnail() ?>"
+                        <img src="/2LK_Shop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>"
                           alt="<?php echo $product->getProductName() ?>" title="<?php echo $product->getProductName() ?>"
                           class="rounded me-3" height="48" />
                         <p class="m-0 d-inline-block align-middle font-16 text-wrap w-75">
@@ -384,7 +384,7 @@
       var productId = button.data('product-id')
       $.ajax({
         type: 'get',
-        url: `/2LK_SHOP/admin/product/detail/${productId}`,
+        url: `/2LK_Shop/admin/product/detail/${productId}`,
         success: function (res) {
           $('#detailModal').html(res);
         }
@@ -399,7 +399,7 @@
       var productId = button.data('product-id')
       $.ajax({
         type: 'get',
-        url: `/2LK_SHOP/admin/product/edit/${productId}`,
+        url: `/2LK_Shop/admin/product/edit/${productId}`,
         success: function (res) {
           $('#editModal').html(res);
         }
@@ -414,7 +414,7 @@
       var productId = button.data('product-id')
       $.ajax({
         type: 'get',
-        url: `/2LK_SHOP/admin/product/addQty/${productId}`,
+        url: `/2LK_Shop/admin/product/addQty/${productId}`,
         success: function (res) {
           $('#add-qty-modal').html(res);
         }
