@@ -88,7 +88,7 @@ $user = new RegisterController();
 </div>
 <!-- ============================================================js================================================================== -->
 <!-- // BEGIN:Đối tượng 'Validator -->
-<script src="/2LKShop/public/js/validator.js"></script>
+<script src="/2LK_Shop/public/js/validator.js"></script>
 <script>
 <?php
     $name = $user -> getAccountInDB();//getAccountInDB

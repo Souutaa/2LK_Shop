@@ -12,7 +12,7 @@
       $count = 0;
       foreach ($productList->productList as $product): ?>
         <a href="./product/<?php echo $product->getProductLine() ?>" class="cart">
-          <img src="<?php echo "/2LKShop/public/images/thumbNail/" . $product->getThumbNail() ?>" alt=""
+          <img src="<?php echo "/2LK_Shop/public/images/thumbNail/" . $product->getThumbNail() ?>" alt=""
             class="cart__img" />
           <div class="cart__wrapper">
             <h3 class="cart__name font-size-1">
