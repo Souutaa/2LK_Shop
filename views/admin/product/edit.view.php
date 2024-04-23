@@ -34,7 +34,7 @@ if (isLoggedIn()) {
     <div class="mb-3">
       <label class="form-label">Thumbnail</label>
       <div class="d-flex flex-row gap-3 thumbnail-preview">
-        <img src="/2LKShop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>" alt="image"
+        <img src="/2LK_Shop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>" alt="image"
           class="img-fluid rounded" width="200" />
       </div>
     </div>
@@ -52,7 +52,7 @@ if (isLoggedIn()) {
             <input class="form-control" type="text" id="product-name" value="<?php echo $image ?>" name='oldImage[]'
               hidden />
             <div style="position: relative; width: 100px" class="img-preview-item">
-              <img src="<?php echo "/2LKShop/public/images/productImg/" . $product->getProductLine() . "/" . $image ?>"
+              <img src="<?php echo "/2LK_Shop/public/images/productImg/" . $product->getProductLine() . "/" . $image ?>"
                 alt="image" class="img-fluid rounded" width="200" />
               <div class="position-absolute font-20 link-danger" style="top: 5px; right: 5px; cursor: pointer"
                 id="delete-img">
@@ -141,7 +141,7 @@ if (isLoggedIn()) {
   </form>
 </div>
 
-<!-- <script src="/2LKShop/public/js/handle_admin_product_img_preview.js"></script> -->
+<!-- <script src="/2LK_Shop/public/js/handle_admin_product_img_preview.js"></script> -->
 <script>
   btnAddThumbnail = document.querySelector(".btn-add-thumbnail");
   thumbnailPreview = document.querySelector(".thumbnail-preview");

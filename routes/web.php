@@ -48,6 +48,12 @@ $routes->add('saveQty', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRO
 $routes->add('product', new Route(constant('URL_SUBFOLDER') . '/product/{id}', array('controller' => 'ProductController', 'method' => 'showAction'), array('id' => '([^&]*)')));
 $routes->add('deleteProduct', new Route(constant('URL_SUBFOLDER') . '/delete/product/{id}', array('controller' => 'ProductController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
 
+// USER
+$routes->add('adminUsers', new Route(constant('URL_SUBFOLDER') . '/admin/users', array('controller' => 'AdminController', 'method' => 'indexUserAction'), array()));
+$routes->add('createUser', new Route(constant('URL_SUBFOLDER') . '/admin/createUser', array('controller' => 'RegisterController', 'method' => 'createUserAction'), array()));
+$routes->add('getEditUserForm', new Route(constant('URL_SUBFOLDER') . '/admin/getEditUserForm', array('controller' => 'UserController', 'method' => 'getEditUserFormAction'), array()));
+$routes->add('updateUserInfo', new Route(constant('URL_SUBFOLDER') . '/admin/updateUserInfo', array('controller' => 'UserController', 'method' => 'updateUserInfoAction'), array()));
+$routes->add('deactiveUser', new Route(constant('URL_SUBFOLDER') . '/admin/deactiveUser', array('controller' => 'UserController', 'method' => 'deactiveUserAction'), array()));
 
 $routes->add('viewCart', new Route(constant('URL_SUBFOLDER') . '/cart', array('controller' => 'CartController', 'method' => 'indexAction'), array()));
 $routes->add('getCartItems', new Route(constant('URL_SUBFOLDER') . '/getCart', array('controller' => 'CartController', 'method' => 'getCartItemsAction'), array()));
