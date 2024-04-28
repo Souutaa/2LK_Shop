@@ -9,6 +9,7 @@ $routes = new RouteCollection();
 $routes->add('user', new Route(constant('URL_SUBFOLDER') . '/user/uploadimg', array('controller' => 'UserController', 'method' => 'updateUserAvatar'), array()));
 
 $routes->add('product', new Route(constant('URL_SUBFOLDER') . '/product/{id}', array('controller' => 'ProductController', 'method' => 'showAction'), array('id' => '[0-9]+')));
+$routes->add('deleteProduct', new Route(constant('URL_SUBFOLDER') . '/delete/product/{id}', array('controller' => 'ProductController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
 
 $routes->add('homepage', new Route(constant('URL_SUBFOLDER') . '/', array('controller' => 'PageController', 'method' => 'indexAction'), array()));
 $routes->add('getCategory', new Route(constant('URL_SUBFOLDER') . '/getCategory', array('controller' => 'PageController', 'method' => 'changeCategory'), array()));
@@ -16,6 +17,16 @@ $routes->add('search', new Route(constant('URL_SUBFOLDER') . '/search/{searchStr
 $routes->add('viewProducts', new Route(constant('URL_SUBFOLDER') . '/view/product', array('controller' => 'PageController', 'method' => 'viewProduct'), array('searchStr' => '([^&]*)')));
 $routes->add('viewCategory', new Route(constant('URL_SUBFOLDER') . '/view/category/{category}', array('controller' => 'PageController', 'method' => 'viewCategory'), array('category' => '([^&]*)')));
 $routes->add('updateViewCategory', new Route(constant('URL_SUBFOLDER') . '/filter/category', array('controller' => 'PageController', 'method' => 'filterCategory'), array()));
+
+$routes->add('viewCart', new Route(constant('URL_SUBFOLDER') . '/cart', array('controller' => 'CartController', 'method' => 'indexAction'), array()));
+$routes->add('getCartItems', new Route(constant('URL_SUBFOLDER') . '/getCart', array('controller' => 'CartController', 'method' => 'getCartItemsAction'), array()));
+$routes->add('paymentInfo', new Route(constant('URL_SUBFOLDER') . '/paymentInfo', array('controller' => 'CartController', 'method' => 'paymentInfoAction'), array()));
+
+$routes->add('viewOrders', new Route(constant('URL_SUBFOLDER') . '/orders', array('controller' => 'OrderController', 'method' => 'viewOrdersAction'), array()));
+$routes->add('viewOrderDetail', new Route(constant('URL_SUBFOLDER') . '/order/{orderId}', array('controller' => 'OrderController', 'method' => 'viewOrderDetailAction'), array('orderId' => '([^&]*)')));
+$routes->add('createOrder', new Route(constant('URL_SUBFOLDER') . '/createOrder', array('controller' => 'OrderController', 'method' => 'createOrderAction'), array()));
+$routes->add('cancelOrder', new Route(constant('URL_SUBFOLDER') . '/cancelOrder/{id}', array('controller' => 'OrderController', 'method' => 'cancelOrderAction'), array('id' => '([^&]*)')));
+$routes->add('viewPersonalInfo', new Route(constant('URL_SUBFOLDER') . '/information', array('controller' => 'OrderController', 'method' => 'viewPersonalInformationAction'), array()));
 
 $routes->add('login', new Route(constant('URL_SUBFOLDER') . '/login', array('controller' => 'SessionController', 'method' => 'loginAction'), array()));
 $routes->add('logout', new Route(constant('URL_SUBFOLDER') . '/logout', array('controller' => 'SessionController', 'method' => 'logoutAction'), array()));
