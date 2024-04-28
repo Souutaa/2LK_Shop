@@ -220,6 +220,7 @@ fieldset {
     outline: none; }
 
 .btn__secondary {
+  background-color: #f0f0f0;
   padding: 1rem 1.8rem; }
   .btn__secondary--active, .btn__secondary:hover {
     background-color: #1a56db;

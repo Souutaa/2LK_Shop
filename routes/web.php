@@ -7,7 +7,6 @@ use Symfony\Component\Routing\RouteCollection;
 $routes = new RouteCollection();
 
 $routes->add('user', new Route(constant('URL_SUBFOLDER') . '/user/uploadimg', array('controller' => 'UserController', 'method' => 'updateUserAvatar'), array()));
-
 $routes->add('product', new Route(constant('URL_SUBFOLDER') . '/product/{id}', array('controller' => 'ProductController', 'method' => 'showAction'), array('id' => '[0-9]+')));
 $routes->add('deleteProduct', new Route(constant('URL_SUBFOLDER') . '/delete/product/{id}', array('controller' => 'ProductController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
 
@@ -57,3 +56,35 @@ $routes->add('editProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMI
 $routes->add('updateProduct', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/saveChange', array('controller' => 'ProductController', 'method' => 'updateAction'), array()));
 $routes->add('addQty', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/addQty/{id}', array('controller' => 'ProductController', 'method' => 'addQtyAction'), array('id' => '([^&]*)')));
 $routes->add('saveQty', new Route(constant('URL_SUBFOLDER') . constant('ADMINPRODUCT') . '/saveQty', array('controller' => 'ProductController', 'method' => 'saveQtyAction'), array()));
+$routes->add('product', new Route(constant('URL_SUBFOLDER') . '/product/{id}', array('controller' => 'ProductController', 'method' => 'showAction'), array('id' => '([^&]*)')));
+$routes->add('deleteProduct', new Route(constant('URL_SUBFOLDER') . '/delete/product/{id}', array('controller' => 'ProductController', 'method' => 'deleteAction'), array('id' => '([^&]*)')));
+
+// USER
+$routes->add('adminUsers', new Route(constant('URL_SUBFOLDER') . '/admin/users', array('controller' => 'AdminController', 'method' => 'indexUserAction'), array()));
+$routes->add('createUser', new Route(constant('URL_SUBFOLDER') . '/admin/createUser', array('controller' => 'RegisterController', 'method' => 'createUserAction'), array()));
+$routes->add('getEditUserForm', new Route(constant('URL_SUBFOLDER') . '/admin/getEditUserForm', array('controller' => 'UserController', 'method' => 'getEditUserFormAction'), array()));
+$routes->add('updateUserInfo', new Route(constant('URL_SUBFOLDER') . '/admin/updateUserInfo', array('controller' => 'UserController', 'method' => 'updateUserInfoAction'), array()));
+$routes->add('deactiveUser', new Route(constant('URL_SUBFOLDER') . '/admin/deactiveUser', array('controller' => 'UserController', 'method' => 'deactiveUserAction'), array()));
+
+// ROLES
+$routes->add('adminRoles', new Route(constant('URL_SUBFOLDER') . '/admin/roles', array('controller' => 'AdminController', 'method' => 'indexRoleAction'), array()));
+$routes->add('adminPermissions', new Route(constant('URL_SUBFOLDER') . '/admin/permissions', array('controller' => 'AdminController', 'method' => 'indexPermissionAction'), array()));
+$routes->add('getRolePermission', new Route(constant('URL_SUBFOLDER') . '/admin/getRolePermission', array('controller' => 'RoleController', 'method' => 'getRolePermissionAction'), array()));
+$routes->add('getRoleInformation', new Route(constant('URL_SUBFOLDER') . '/admin/getRoleInformation', array('controller' => 'RoleController', 'method' => 'getRoleInformationAction'), array()));
+$routes->add('removeUserGroupRole', new Route(constant('URL_SUBFOLDER') . '/admin/removeUserGroupRole', array('controller' => 'RoleController', 'method' => 'removeUserGroupRoleAction'), array()));
+$routes->add('toggleDisableRole', new Route(constant('URL_SUBFOLDER') . '/admin/toggleDisableRole', array('controller' => 'RoleController', 'method' => 'toggleDisableRoleAction'), array()));
+$routes->add('createRole', new Route(constant('URL_SUBFOLDER') . '/admin/createRole', array('controller' => 'RoleController', 'method' => 'createRoleAction'), array()));
+$routes->add('getEditRoleForm', new Route(constant('URL_SUBFOLDER') . '/admin/getEditRoleForm', array('controller' => 'RoleController', 'method' => 'getEditRoleFormAction'), array()));
+$routes->add('editRole', new Route(constant('URL_SUBFOLDER') . '/admin/editRole', array('controller' => 'RoleController', 'method' => 'editRoleAction'), array()));
+$routes->add('deleteRole', new Route(constant('URL_SUBFOLDER') . '/admin/deleteRole', array('controller' => 'RoleController', 'method' => 'deleteRoleAction'), array()));
+
+$routes->add('viewCart', new Route(constant('URL_SUBFOLDER') . '/cart', array('controller' => 'CartController', 'method' => 'indexAction'), array()));
+$routes->add('getCartItems', new Route(constant('URL_SUBFOLDER') . '/getCart', array('controller' => 'CartController', 'method' => 'getCartItemsAction'), array()));
+$routes->add('paymentInfo', new Route(constant('URL_SUBFOLDER') . '/paymentInfo', array('controller' => 'CartController', 'method' => 'paymentInfoAction'), array()));
+
+$routes->add('viewOrders', new Route(constant('URL_SUBFOLDER') . '/orders', array('controller' => 'OrderController', 'method' => 'viewOrdersAction'), array()));
+$routes->add('viewOrderDetail', new Route(constant('URL_SUBFOLDER') . '/order/{orderId}', array('controller' => 'OrderController', 'method' => 'viewOrderDetailAction'), array('orderId' => '([^&]*)')));
+$routes->add('createOrder', new Route(constant('URL_SUBFOLDER') . '/createOrder', array('controller' => 'OrderController', 'method' => 'createOrderAction'), array()));
+$routes->add('cancelOrder', new Route(constant('URL_SUBFOLDER') . '/cancelOrder/{id}', array('controller' => 'OrderController', 'method' => 'cancelOrderAction'), array('id' => '([^&]*)')));
+$routes->add('viewPersonalInfo', new Route(constant('URL_SUBFOLDER') . '/information', array('controller' => 'OrderController', 'method' => 'viewPersonalInformationAction'), array()));
+

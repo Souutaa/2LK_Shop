@@ -1,43 +1,43 @@
 <section class="slide-show container">
     <div class="sidebar">
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/laptop" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/laptop" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-solid fa-laptop sidebar__icon"></i>
                 <span>Máy tính xách tay</span>
             </a>
         </div>
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/pc" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/pc" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-solid fa-computer"></i>
                 <span>Máy tính để bàn</span>
             </a>
         </div>
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/vga" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/vga" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-solid fa-desktop"></i>
                 <span>Card đồ họa</span>
             </a>
         </div>
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/cpu" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/cpu" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-solid fa-microchip"></i>
                 <span>Vi xử lý</span>
             </a>
         </div>
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/keyboard" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/keyboard" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-solid fa-keyboard"></i>
                 <span>Bàn phím</span>
             </a>
         </div>
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/mice" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/mice" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-regular fa-computer-mouse fontAwesome"></i>
                 <span>Chuột</span>
             </a>
         </div>
         <div class="sidebar__item">
-            <a href="/2LK_SHOP/view/category/headphone" class="sidebar__link font-size-2 text-color--4">
+            <a href="/2LK_Shop/view/category/headphone" class="sidebar__link font-size-2 text-color--4">
                 <i class="fa-solid fa-headphones"></i>
                 <span>Tai nghe</span>
             </a>
@@ -75,7 +75,7 @@
 
                 $('.view-more').click(function (e) {
                     console.log($(this).attr('data-section'), $(this).attr('data-brand'))
-                    $.redirect('/2LK_SHOP/view/product', {
+                    $.redirect('/2LK_Shop/view/product', {
                         'category': JSON.stringify($(this).attr('data-section')),
                         'brand': JSON.stringify($(this).attr('data-brand'))
                     });

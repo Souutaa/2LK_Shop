@@ -4,18 +4,14 @@ use App\Models\User;
 
 if (!isLoggedIn()) {
   $_SESSION['isLoggedIn'] = false;
+  redirect(getPath($routes, 'homepage'));
 }
 if (isLoggedIn()) {
   $user = new User();
   $user = unserialize($_SESSION['user']);
-  if ($user->getUserGroup() != 'CUSTOMER') {
-    redirect(getPath($routes, 'admin'));
-  }
 }
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,16 +25,13 @@ if (isLoggedIn()) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.css" />
   <link rel="stylesheet" href="/2LK_Shop/public/css/bootstrap.min.css">
   <link rel="stylesheet" href="/2LK_Shop/public/css/simple-notify.min.css" />
-  <link rel="stylesheet" href="/2LK_Shop/public/css/style1.css">
+  <link rel="stylesheet" href="/2LK_Shop/public/css/index.css">
   <script src="/2LK_Shop/public/js/jquery.min.js"></script>
   <script src="/2LK_Shop/public/json/provinces.json"></script>
-  <script src="/2LK_Shop/public/js/jquery.redirect.js"></script>
   <script src="/2LK_Shop/public/js/simple-notify.min.js"></script>
   <script src="/2LK_Shop/public/js/sweetalert2.all.min.js"></script>
-  <script src="/2LK_Shop/public/js/wNumb.min.js"></script>
 </head>
 
 <body>
@@ -52,7 +45,7 @@ if (isLoggedIn()) {
         </div>
         <form class="search__form">
           <?php if ($_SESSION['showNav'] == true) : ?>
-            <input type="text" class="fontAwesome search__input" placeholder="&#xf002;   Search" />
+            <input type="text" class="fontAwesome search__input" name="searchInformation" placeholder="&#xf002;   Search" />
           <?php endif ?>
         </form>
         <nav class="nav-user">
@@ -63,6 +56,16 @@ if (isLoggedIn()) {
               </svg>
             </a>
             <div class="nav-user__user">
+              <!-- <img src="/2LK_Shop/public/images/productImg/Image.png" alt="User photo" class="nav-user__user-photo" /> -->
+              <!-- <?php
+                    $image = "/xampp/htdocs/2LK_Shop/public/images/productImg/Image.png";
+
+                    if (file_exists($image)) {
+                      echo "The file $image exists";
+                    } else {
+                      echo "The file $image does not exist";
+                    }
+                    ?> -->
               <?php
               $image = '/xampp/htdocs/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
               $avata = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
@@ -86,7 +89,7 @@ if (isLoggedIn()) {
                   <a href="<?php echo $routes->get('viewPersonalInfo')->getPath() ?>" class="nav-user__option font-size-2">Thông tin cá nhân</a>
                 </li>
                 <li class="nav-user__log-out">
-                  <a href="#" class="log-out btn" id="log-out-btn">
+                  <a href="<?php echo $routes->get('logout')->getPath() ?>" class="log-out btn">
                     <i class="fa-solid fa-right-from-bracket color--red font-size-1"></i>
                     <span class="color--red font-size-2">Sign Out</span>
                   </a>
@@ -96,19 +99,74 @@ if (isLoggedIn()) {
         </nav>
       <?php endif ?>
       <?php if ($_SESSION['isLoggedIn'] == false) : ?>
-        <a href="/2LK_Shop/login" class="btn btn__secondary">Đăng nhập</a>
-        <a href="/2LK_Shop/register" class="btn btn__secondary">Đăng kí</a>
+        <a href="login" class="btn btn__secondary">Đăng nhập</a>
+        <a href="register" class="btn btn__secondary btn__secondary--active">Đăng kí</a>
       <?php endif ?>
       </nav>
       </div>
     </header>
-    <?php require("$name.view.php"); ?>
-    <footer class="footer">
+    <div class="breadcrumb container">
+      <a href="/2LK_Shop" class="breadcrumb__link text-color--1">
+        <svg class="icon">
+          <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-home"></use>
+        </svg>
+        <span class="para--sm">Trang chủ</span>
+      </a>
+      <svg class="icon text-color--2">
+        <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
+      </svg>
+      <a href="#" class="breadcrumb__link">
+        <span class="para--sm text-color--2">Thông tin cá nhân</span>
+      </a>
+    </div>
+    <section class="container div-8-col user__wrapper">
+      <div class="user__sidebar">
+        <div class="user__sidebar--top">
+          <?php
+              $image = '/xampp/htdocs/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
+              $avata = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
+              if (file_exists($image)) : ?>
+                <img src="<?php echo $avata ?>" alt="User's Avatar" class="user__img" />
+              <?php else : ?>
+                <img src="/2LK_Shop/public/images/user_avatar/avatar_default.jpg" alt="User's Avatar" class="user__img" />
+              <?php endif ?>
+          <div class="user__sidebar--top-right">
+            <h3 class="user__name font-size-4 text-color--1">
+              <?php echo $user->getCurrentfirstNameInDB($user->getUsername())[0] . " " . $user->getCurrentLastNameInDB($user->getUsername())[0] ?>
+            </h3>
+            <span class="user__email font-size-3 text-color--4">
+              <?php echo $user->getCurrentEmailInDB($user->getUsername())[0] ?>
+            </span>
+          </div>
+        </div>
+        <div class="user__sidebar--bottom">
+          <div class="user__sidebar-item sidebar__item">
+            <a href="<?php echo getPath($routes, 'viewPersonalInfo') ?>" class="sidebar__link">
+              <i class="fa-solid fa-user"></i>
+              <span class="">Tài khoản của tôi</span>
+            </a>
+          </div>
+          <div class="user__sidebar-item sidebar__item">
+            <a href="<?php echo getPath($routes, 'viewOrders') ?>" class="sidebar__link">
+              <i class="fa-sharp fa-solid fa-receipt"></i>
+              <span>Hóa đơn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="user__container user__container--no-bg">
+        <?php require("$name.view.php"); ?>
+      </div>
+    </section>
+    <footer class="footer mt-4">
       <div class="footer__container">
         <div class="footer__left">
           <img src="/2LK_Shop/public/images/page/Logo.svg" alt="" class="logo" />
           <p class="footer__detail para--sm u-margin-bottom-big">
-            Quang Long, Đình Luân, Tuấn Kiệt
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+            facilis labore ab blanditiis deleniti consequuntur recusandae quod
+            inventore, sint illum eligendi expedita dolores possimus,
+            voluptatum, omnis sunt. Accusamus, repellendus aliquid?
           </p>
           <div class="socials">
             <a href="#" class="social__icon facebook__icon">
@@ -132,7 +190,7 @@ if (isLoggedIn()) {
         </div>
         <div class="footer__right">
           <div class="footer__contact">
-            <h3 class="heading__territory u-margin-bottom-big">2LK_Shop</h3>
+            <h3 class="heading__territory u-margin-bottom-big">Techshop</h3>
 
             <a href="#" class="para--sm text--hover u-margin-bottom-small">About Us</a>
             <a href="#" class="para--sm text--hover u-margin-bottom-small">Contact Us</a>
@@ -145,9 +203,9 @@ if (isLoggedIn()) {
             <a href="#" class="para--sm text--hover u-margin-bottom-small">Privacy Policy</a>
           </div>
           <div class="footer__contact">
-            <h3 class="heading__territory u-margin-bottom-big">2LK_Shop</h3>
+            <h3 class="heading__territory u-margin-bottom-big">Techshop</h3>
 
-            <a href="#" class="para--sm text--hover u-margin-bottom-small">support@2LK_Shop.com</a>
+            <a href="#" class="para--sm text--hover u-margin-bottom-small">support@techshop.com</a>
             <a href="#" class="para--sm text--hover u-margin-bottom-small">The
             </a>
           </div>
@@ -159,21 +217,6 @@ if (isLoggedIn()) {
     </footer>
   </div>
 </body>
-<script src="/2LK_Shop/public/js/index.js"></script>
-<script>
-  $(document).ready(function(e) {
-    $('.search__form').submit(function(e) {
-      e.preventDefault();
-      let searchString = $('.search__input').val()
-      let url = "<?php echo getPath($routes, 'search') ?>"
-      window.location.replace(url.replace('{searchStr}', `${searchString}`));
-    })
-
-    $('#log-out-btn').click(function(e) {
-      localStorage.removeItem('cart');
-      location.href = '<?php echo $routes->get('logout')->getPath() ?>'
-    })
-  })
-</script>
+<script scr="/2LK_Shop/public/js/index.js"></script>
 
 </html>

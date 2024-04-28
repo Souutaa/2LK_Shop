@@ -164,7 +164,7 @@ $(document).ready(function () {
       var categoryId = button.data('category-id')
       $.ajax({
         type: 'get',
-        url: `/2LK_SHOP/admin/category/edit/${categoryId}`,
+        url: `/2LK_Shop/admin/category/edit/${categoryId}`,
         success: function (res) {
             console.log(res);
           $('#editCategoryModal').html(res);
