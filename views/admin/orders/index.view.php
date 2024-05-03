@@ -55,7 +55,9 @@
                 <th style="width: 125px">Action</th>
               </tr>
             </thead>
-            
+            <tbody id="user-order__list">
+              <?php require("order_list.view.php")?>
+            </tbody>
           </table>
         </div>
       </div>
