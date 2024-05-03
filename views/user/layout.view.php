@@ -67,13 +67,8 @@ if (isLoggedIn()) {
                     }
                     ?> -->
               <?php
-              $image = '/xampp/htdocs/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
-              $avata = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
-              if (file_exists($image)) : ?>
-                <img src="<?php echo $avata ?>" alt="User photo" class="nav-user__user-photo" />
-              <?php else : ?>
-                <img src="/2LK_Shop/public/images/user_avatar/avatar_default.jpg" alt="User photo" class="nav-user__user-photo" />
-              <?php endif ?>
+              checkImg($user)
+              ?>
               <ul class="nav-user__dropdown">
                 <li class="nav-user__user-info">
                   <h3 class="nav-user__user-name font-size-4 text-color--1">

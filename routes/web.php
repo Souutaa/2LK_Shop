@@ -82,9 +82,13 @@ $routes->add('viewCart', new Route(constant('URL_SUBFOLDER') . '/cart', array('c
 $routes->add('getCartItems', new Route(constant('URL_SUBFOLDER') . '/getCart', array('controller' => 'CartController', 'method' => 'getCartItemsAction'), array()));
 $routes->add('paymentInfo', new Route(constant('URL_SUBFOLDER') . '/paymentInfo', array('controller' => 'CartController', 'method' => 'paymentInfoAction'), array()));
 
+// ORDER
 $routes->add('viewOrders', new Route(constant('URL_SUBFOLDER') . '/orders', array('controller' => 'OrderController', 'method' => 'viewOrdersAction'), array()));
 $routes->add('viewOrderDetail', new Route(constant('URL_SUBFOLDER') . '/order/{orderId}', array('controller' => 'OrderController', 'method' => 'viewOrderDetailAction'), array('orderId' => '([^&]*)')));
 $routes->add('createOrder', new Route(constant('URL_SUBFOLDER') . '/createOrder', array('controller' => 'OrderController', 'method' => 'createOrderAction'), array()));
 $routes->add('cancelOrder', new Route(constant('URL_SUBFOLDER') . '/cancelOrder/{id}', array('controller' => 'OrderController', 'method' => 'cancelOrderAction'), array('id' => '([^&]*)')));
 $routes->add('viewPersonalInfo', new Route(constant('URL_SUBFOLDER') . '/information', array('controller' => 'OrderController', 'method' => 'viewPersonalInformationAction'), array()));
 
+$routes->add('adminOrders', new Route(constant('URL_SUBFOLDER') . '/admin/orders', array('controller' => 'AdminController', 'method' => 'indexOrderAction'), array()));
+$routes->add('getOrderDetail', new Route(constant('URL_SUBFOLDER') . '/admin/order/detail/{id}', array('controller' => 'OrderController', 'method' => 'getOrderDetail'), array('id' => '([^&]*)')));
+$routes->add('updateOrderStatus', new Route(constant('URL_SUBFOLDER') . '/admin/order/updateStatus', array('controller' => 'OrderController', 'method' => 'updateOrderStatusAction'), array()));
