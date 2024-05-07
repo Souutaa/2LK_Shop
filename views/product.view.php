@@ -1,12 +1,12 @@
 <div class="breadcrumb container">
     <a href="<?php echo $routes->get('homepage')->getPath(); ?>" class="breadcrumb__link text-color--1 font-size-2">
         <svg class="icon">
-            <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-home"></use>
+            <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-home"></use>
         </svg>
         <span class="para--sm">Trang chủ</span>
     </a>
     <svg class="icon text-color--2">
-        <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-chevron-right"></use>
+        <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-chevron-right"></use>
     </svg>
     <a href="" class="breadcrumb__link">
         <span class="para--sm text-color--1">
@@ -14,7 +14,7 @@
         </span>
     </a>
     <svg class="icon text-color--2">
-        <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-chevron-right"></use>
+        <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-chevron-right"></use>
     </svg>
     <span class="breadcrumb__link">
         <span class="para--sm text-color--2">
@@ -25,25 +25,25 @@
 <section class="container product-detail__areas u-margin-bottom-huge">
     <div class="product__img--default">
         <?php if ($product->getImages()): ?>
-            <img src="<?php echo "/2LKShop/public/images/productImg/" . $product->getProductLine() . "/" . $product->getImages()[0] ?>"
+            <img src="<?php echo "/2LK_Shop/public/images/productImg/" . $product->getProductLine() . "/" . $product->getImages()[0] ?>"
                 alt="" />
         <?php else: ?>
-            <img src="<?php echo "/2LKShop/public/images/thumbNail/" . $product->getThumbNail() ?>" alt="" />
+            <img src="<?php echo "/2LK_Shop/public/images/thumbNail/" . $product->getThumbNail() ?>" alt="" />
         <?php endif ?>
     </div>
     <!-- <div class="product__img-slide-list">
         <?php foreach ($product->getImages() as $image): ?>
             <div class="product__img-slide-item">
-                <img src="<?php echo "/2LKShop/public/images/productImg/" . $product->getProductLine() . "/" . $image ?>"
+                <img src="<?php echo "/2LK_Shop/public/images/productImg/" . $product->getProductLine() . "/" . $image ?>"
                     alt="" class="product__img-item" />
             </div>
         <?php endforeach; ?>
         <div class="slide__arrow slide__container">
             <svg class="arrow__item">
-                <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-chevron-left"></use>
+                <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-chevron-left"></use>
             </svg>
             <svg class="arrow__item">
-                <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-chevron-right"></use>
+                <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-chevron-right"></use>
             </svg>
         </div>
     </div> -->
@@ -55,7 +55,7 @@
             <?php foreach ($product->getInfor() as $productInfo): ?>
                 <div class="product__detail">
                     <svg class="icon">
-                        <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-checkmark-outline"></use>
+                        <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-checkmark-outline"></use>
                     </svg>
                     <p class="para--sm text-color--2">
                         <?php echo $productInfo ?>

@@ -156,7 +156,7 @@
       let roleId = $(this).attr('data-role-id');
       $.ajax({
         type: 'POST',
-        url: "/2LKShop/admin/toggleDisableRole",
+        url: "/2LK_Shop/admin/toggleDisableRole",
         data: {
           'roleId': JSON.stringify(roleId),
           'state': JSON.stringify(isDisabled)
@@ -205,7 +205,7 @@
       var roleId = button.data('role-id')
       $.ajax({
         type: 'get',
-        url: `/2LKShop/admin/getEditRoleForm`,
+        url: `/2LK_Shop/admin/getEditRoleForm`,
         data: {
           'roleId': JSON.stringify(roleId)
         },
@@ -219,7 +219,7 @@
       let roleId = ($(this).attr("data-role-id"))
       $.ajax({
         type: 'post',
-        url: `/2LKShop/admin/deleteRole`,
+        url: `/2LK_Shop/admin/deleteRole`,
         data: {
           'roleId': JSON.stringify(roleId)
         },

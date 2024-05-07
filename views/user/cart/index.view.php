@@ -1,12 +1,12 @@
 <div class="breadcrumb container">
   <a href="<?php echo getPath($routes, 'homepage')?>" class="breadcrumb__link text-color--1">
     <svg class="icon">
-      <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-home"></use>
+      <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-home"></use>
     </svg>
     <span class="para--sm">Trang chủ</span>
   </a>
   <svg class="icon text-color--2">
-    <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
+    <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
   </svg>
   <a href="" class="breadcrumb__link">
     <span class="para--sm text-color--2">Giỏ hàng</span>
@@ -130,7 +130,7 @@
           for(let index in productList) {
             $('.shopping-cart__list-item').append(`
               <div class="shopping-cart__item-${productList[index].productLine} div-16-col" >
-                <img src="/2LKShop/public/images/thumbNail/${productList[index].thumbnail}" alt="${productList[index].name}" class="shopping-cart__item-img gd--1" />
+                <img src="/2LK_Shop/public/images/thumbNail/${productList[index].thumbnail}" alt="${productList[index].name}" class="shopping-cart__item-img gd--1" />
                 <div class="shopping-cart__item-info gd--2">
                   <h3 class="shopping-cart__item-name font-size-4 text-color--4">
                     ${productList[index].name}
@@ -144,7 +144,7 @@
                   class="shopping-cart__item-quantity" data-id="${productList[index].productLine}"/>
                 </div>
                 <svg class="shopping-cart__item-trash icon gd--5 u-margin-top-sm" onClick="deleteItemFromCart('${productList[index].productLine}')">
-                  <use xlink:href="/2LKShop/public/images/svg/symbol-defs.svg#icon-trash"></use>
+                  <use xlink:href="/2LK_Shop/public/images/svg/symbol-defs.svg#icon-trash"></use>
                 </svg>
               </div>
             `)
@@ -177,7 +177,7 @@
       $('.shopping-cart.container').html(
         `
           <div class="shopping-cart__empty">
-            <img src="/2LKShop/public/images/SVG/cart-illustartion.svg" alt="" />
+            <img src="/2LK_Shop/public/images/SVG/cart-illustartion.svg" alt="" />
             <h3 class="heading__secondary">Giỏ hàng của bạn trống</h3>
             <p class="para--sm text-color--2 u-margin-bottom-medium">
               Có vẻ bạn chưa thêm mặt hàng nào vào giỏ

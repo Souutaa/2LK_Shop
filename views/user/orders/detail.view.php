@@ -26,7 +26,7 @@
       $discount += $product['purchasePrice'] * ($product['purchaseDiscount'] / 100);
       ?>
       <div class="order-detail__item div-8-col">
-        <a href='/2LKShop/product/<?php echo $product['Product_Line'] ?>'
+        <a href='/2LK_Shop/product/<?php echo $product['Product_Line'] ?>'
           class="order-detail__product-name font-size-2 text-color--4">
           <?php echo $product['Product_Name'] ?>
           <?php if (strtotime($product['warranty_period']) > strtotime(date('Y-m-d', time()))):?>
@@ -105,7 +105,7 @@
         if (result.isConfirmed) {
           $.ajax({
             method: 'post',
-            url: `/2LKShop/cancelOrder/${orderId}`,
+            url: `/2LK_Shop/cancelOrder/${orderId}`,
             success: function (res) {
               Swal.fire(
                 'Deleted!',

@@ -1,7 +1,7 @@
 <div class="user__container user__container--no-bg">
   <?php if (count($orders->orders) == 0): ?>
     <div class="user-order__empty">
-      <img src="/2LKShop/public/images/SVG/cart-illustartion.svg" alt="" class="u-margin-bottom-big" />
+      <img src="/2LK_Shop/public/images/SVG/cart-illustartion.svg" alt="" class="u-margin-bottom-big" />
       <h3 class="heading__secondary">Bạn chưa có đơn hàng nào</h3>
       <p class="para--sm text-color--2 u-margin-bottom-medium">
         Hãy lên đơn cùng chúng tôi nào

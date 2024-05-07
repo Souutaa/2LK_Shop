@@ -6,18 +6,18 @@
 <div class="breadcrumb container">
   <a href="<?php echo getPath($routes, 'homepage') ?>" class="breadcrumb__link text-color--1">
     <svg class="icon">
-      <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-home"></use>
+      <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-home"></use>
     </svg>
     <span class="para--sm">Trang chủ</span>
   </a>
   <svg class="icon text-color--1">
-    <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
+    <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
   </svg>
   <a href="<?php echo getPath($routes, 'viewCart') ?>" class="breadcrumb__link">
     <span class="para--sm text-color--1">Giỏ hàng</span>
   </a>
   <svg class="icon text-color--2">
-    <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
+    <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
   </svg>
   <a href="#" class="breadcrumb__link">
     <span class="para--sm text-color--2">Thanh toán</span>

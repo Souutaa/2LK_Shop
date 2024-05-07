@@ -1,12 +1,12 @@
 <div class="breadcrumb container">
-  <a href="/2LKShop" class="breadcrumb__link text-color--1 font-size-2">
+  <a href="/2LK_Shop" class="breadcrumb__link text-color--1 font-size-2">
     <svg class="icon">
-      <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-home"></use>
+      <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-home"></use>
     </svg>
     <span class="para--sm">Trang chủ</span>
   </a>
   <svg class="icon text-color--2">
-    <use xlink:href="/2LKShop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
+    <use xlink:href="/2LK_Shop/public/images/SVG/symbol-defs.svg#icon-chevron-right"></use>
   </svg>
   <a href="" class="breadcrumb__link">
     <span class="para--sm text-color--1">
@@ -108,8 +108,8 @@
   </nav>
 </section>
 
-<script src="/2LKShop/public/js/filter.js"></script>
-<script src="/2LKShop/public/js/productPagination.js"></script>
+<script src="/2LK_Shop/public/js/filter.js"></script>
+<script src="/2LK_Shop/public/js/productPagination.js"></script>
 <script src="https://unpkg.com/nouislider@10.0.0/distribute/nouislider.min.js"></script>
 
 <script>
@@ -188,7 +188,7 @@
         }
         $.ajax({
           type: 'get',
-          url: '/2LKShop/filter/category',
+          url: '/2LK_Shop/filter/category',
           data: {
             'data': JSON.stringify(filter)
           },
@@ -232,7 +232,7 @@
       }
       $.ajax({
         type: 'get',
-        url: '/2LKShop/filter/category',
+        url: '/2LK_Shop/filter/category',
         data: {
           'data': JSON.stringify(filter)
         },
@@ -288,7 +288,7 @@
       }
       $.ajax({
         type: 'get',
-        url: '/2LKShop/filter/category',
+        url: '/2LK_Shop/filter/category',
         data: {
           'data': JSON.stringify(filter)
         },

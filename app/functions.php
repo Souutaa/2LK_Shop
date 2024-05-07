@@ -89,11 +89,11 @@ function getSessionUser() {
 
 function checkImg($user)
 {
-    $image = '/xampp/htdocs/2LKShop/public/images/user_avatar/user_avatar_' . $user->getUsername();
-    $anhJpeg = '/2LKShop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
-    $anhJpg = '/2LKShop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpg';
-    $anhPng = '/2LKShop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.png';
-    $anhWebp = '/2LKShop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.webp';
+    $image = '/xampp/htdocs/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername();
+    $anhJpeg = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpeg';
+    $anhJpg = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.jpg';
+    $anhPng = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.png';
+    $anhWebp = '/2LK_Shop/public/images/user_avatar/user_avatar_' . $user->getUsername() . '.webp';
     if (file_exists($image . '.jpeg')) {
         echo "<img src= $anhJpeg alt='User photo' class='nav-user__user-photo' />";
     } elseif ((file_exists($image . '.png'))) {
@@ -103,6 +103,6 @@ function checkImg($user)
     } elseif ((file_exists($image . '.jpg'))) {
         echo "<img src= $anhWebp alt='User photo' class='nav-user__user-photo' />";
     } else {
-        echo "<img src='/2LKShop/public/images/user_avatar/avatar_default.jpg' />";
+        echo "<img src='/2LK_Shop/public/images/user_avatar/avatar_default.jpg' />";
     }
 }
