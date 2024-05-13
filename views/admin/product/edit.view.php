@@ -34,7 +34,7 @@ if (isLoggedIn()) {
     <div class="mb-3">
       <label class="form-label">Thumbnail</label>
       <div class="d-flex flex-row gap-3 thumbnail-preview">
-        <img src="/2LK_Shop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>" alt="image"
+        <img src="/2LKShop/public/images/thumbNail/<?php echo $product->getThumbnail() ?>" alt="image"
           class="img-fluid rounded" width="200" />
       </div>
     </div>
@@ -48,19 +48,19 @@ if (isLoggedIn()) {
       <label class="form-label">Images</label>
       <div class="d-flex flex-row flex-wrap gap-3 old-img-preview-list">
         <?php foreach ($product->getImages() as $key => $image): ?>
-          <div id="img-<?php echo $product->getProductLine() . $key ?>">
-            <input class="form-control" type="text" id="product-name" value="<?php echo $image ?>" name='oldImage[]'
-              hidden />
-            <div style="position: relative; width: 100px" class="img-preview-item">
-              <img src="<?php echo "/2LK_Shop/public/images/productImg/" . $product->getProductLine() . "/" . $image ?>"
-                alt="image" class="img-fluid rounded" width="200" />
-              <div class="position-absolute font-20 link-danger" style="top: 5px; right: 5px; cursor: pointer"
-                id="delete-img">
-                <i class="mdi mdi-delete delete-old-img-btn"
-                  data-product-image="img-<?php echo $product->getProductLine() . $key ?>"></i>
+            <div id="img-<?php echo $product->getProductLine() . $key ?>">
+              <input class="form-control" type="text" id="product-name" value="<?php echo $image ?>" name='oldImage[]'
+                hidden />
+              <div style="position: relative; width: 100px" class="img-preview-item">
+                <img src="<?php echo "/2LKShop/public/images/productImg/" . $product->getProductLine() . "/" . $image ?>"
+                  alt="image" class="img-fluid rounded" width="200" />
+                <div class="position-absolute font-20 link-danger" style="top: 5px; right: 5px; cursor: pointer"
+                  id="delete-img">
+                  <i class="mdi mdi-delete delete-old-img-btn"
+                    data-product-image="img-<?php echo $product->getProductLine() . $key ?>"></i>
+                </div>
               </div>
             </div>
-          </div>
         <?php endforeach; ?>
       </div>
     </div>
@@ -90,9 +90,11 @@ if (isLoggedIn()) {
       <div class="col-sm-6">
         <label for="example-select" class="form-label">Warranty Period</label>
         <select class="form-select" name="warranty" id="example-select">
-          <option value='none'>Không có bảo hành</option>
+          <!-- <option value='none'>Không có bảo hành</option> -->
           <?php foreach ($warrantyList->warrantyList as $warranty): ?>
-            <option value=<?php echo $warranty->getWarrantyId() ?>><?php echo $warranty->getMonths() ?> Tháng</option>
+              <option value="<?php echo $warranty->getWarrantyId() ?>" 
+              <?php if ($warranty->getWarrantyId() == $product->getWarrantyId())
+                echo "selected" ?>><?php echo $warranty->getMonths() ?> Tháng</option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -102,9 +104,10 @@ if (isLoggedIn()) {
         <label for="example-select" class="form-label">Brand</label>
         <select class="form-select" name="brand" id="example-select">
           <?php foreach ($brands->brandList as $brand): ?>
-            <option value="<?php echo $brand->id ?>" <?php if ($brand->id == $product->getBrandID())
-                 echo "selected" ?>>
-              <?php echo $brand->name ?></option>
+              <?php if ($brand->delete_at == null): ?>
+                <option value="<?php echo $brand->id ?>" <?php if ($brand->id == $product->getBrandID())
+                     echo "selected" ?>> <?php echo $brand->name ?></option>
+              <?php endif ?>
           <?php endforeach; ?>
         </select>
       </div>
@@ -112,8 +115,11 @@ if (isLoggedIn()) {
         <label for="example-select" class="form-label">Category</label>
         <select class="form-select" name="category" id="example-select">
           <?php foreach ($categories->categories as $category): ?>
-            <option value="<?php echo $category->getCategoryID() ?>" <?php if ($category->getCategoryName() == $product->getCategoryName())
-                 echo "selected" ?>><?php echo $category->getCategoryName() ?></option>
+              <?php if ($category->getCategoryDeleteAt() == null): ?>
+                  <option value="<?php echo $category->getCategoryID() ?>" 
+                  <?php if ($category->getCategoryName() == $product->getCategoryName())
+                    echo "selected" ?>><?php echo $category->getCategoryName() ?></option>
+              <?php endif ?>
           <?php endforeach; ?>
         </select>
       </div>
@@ -125,7 +131,7 @@ if (isLoggedIn()) {
       </button>
       <div id="information-group-edit">
         <?php foreach ($product->getInfor() as $info): ?>
-          <input class="form-control" name="information[]" type="text" id="information" value="<?php echo $info ?>" />
+            <input class="form-control" name="information[]" type="text" id="information" value="<?php echo $info ?>" />
         <?php endforeach ?>
       </div>
     </div>
@@ -141,7 +147,7 @@ if (isLoggedIn()) {
   </form>
 </div>
 
-<!-- <script src="/2LK_Shop/public/js/handle_admin_product_img_preview.js"></script> -->
+<!-- <script src="/2LKShop/public/js/handle_admin_product_img_preview.js"></script> -->
 <script>
   btnAddThumbnail = document.querySelector(".btn-add-thumbnail");
   thumbnailPreview = document.querySelector(".thumbnail-preview");

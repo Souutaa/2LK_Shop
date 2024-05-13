@@ -6,7 +6,7 @@
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <li class="breadcrumb-item">
-                <a href="javascript: void(0);">Techshop</a>
+                <a href="javascript: void(0);">2LKShop</a>
               </li>
 
               <li class="breadcrumb-item active">Category</li>
@@ -27,10 +27,10 @@
                 <?php
                 if (isLoggedIn() && in_array('Ca_Create', $user->getPermissions())):
                   ?>
-                    <button type="button" class="btn btn-primary" id="add-product-btn" data-bs-toggle="modal"
-                      data-bs-target="#add-new-category">
-                      Add Category
-                    </button>
+                      <button type="button" class="btn btn-primary" id="add-product-btn" data-bs-toggle="modal"
+                        data-bs-target="#add-new-category">
+                        Add Category
+                      </button>
                 <?php endif ?>
               </div>
             </div>
@@ -49,32 +49,32 @@
                 </thead>
                 <tbody>
                   <?php foreach ($categories->categories as $category): ?>
-                      <?php if ($category->getCategoryDeleteAt() == null): ?>
-                        <tr>
-                          <td><?php echo $category->getCategoryID() ?></td>
-                          <td><?php echo $category->getCategoryName() ?></td>
-                          <td class="table-action">
-                            <?php
-                            if (isLoggedIn() && in_array('Ca_Edit', $user->getPermissions())):
-                              ?>
-                                <button type="button" class="action-icon btn" data-bs-toggle="modal"
-                                  data-bs-target="#change-category" 
-                                  data-category-id="<?php echo $category->getCategoryID() ?>">
-                                  <i class="mdi mdi-square-edit-outline"></i>
-                                </button>
-                            <?php endif ?>
-                            <?php
-                            if (isLoggedIn() && in_array('Ca_Delete', $user->getPermissions())):
-                              ?>
-                                <button type="button" class="action-icon btn delete-btn"
-                                  data-category-id="<?php echo $category->getCategoryID() ?>">
-                                  <i class="mdi mdi-delete"></i>
-                                </button>
-                            <?php endif ?>
+                        <?php if ($category->getCategoryDeleteAt() == null): ?>
+                            <tr>
+                              <td><?php echo $category->getCategoryID() ?></td>
+                              <td><?php echo $category->getCategoryName() ?></td>
+                              <td class="table-action">
+                                <?php
+                                if (isLoggedIn() && in_array('Ca_Edit', $user->getPermissions())):
+                                  ?>
+                                      <button type="button" class="action-icon btn" data-bs-toggle="modal"
+                                        data-bs-target="#change-category" 
+                                        data-category-id="<?php echo $category->getCategoryID() ?>">
+                                        <i class="mdi mdi-square-edit-outline"></i>
+                                      </button>
+                                <?php endif ?>
+                                <?php
+                                if (isLoggedIn() && in_array('Ca_Delete', $user->getPermissions())):
+                                  ?>
+                                      <button type="button" class="action-icon btn delete-btn"
+                                        data-category-id="<?php echo $category->getCategoryID() ?>">
+                                        <i class="mdi mdi-delete"></i>
+                                      </button>
+                                <?php endif ?>
                       
-                          </td>
-                        </tr>
-                      <?php endif ?>
+                              </td>
+                            </tr>
+                        <?php endif ?>
                   <?php endforeach ?>
                 </tbody>
               </table>
@@ -179,41 +179,41 @@ $(document).ready(function () {
     <?php
     if (isLoggedIn() && in_array('Ca_Delete', $user->getPermissions())):
       ?>
-        $('.delete-btn').click(function (e) {
-          let id = $(this).attr('data-category-id');
-          Swal.fire({
-            title: 'Do you want to delete this product?',
-            showCancelButton: true,
-            confirmButtonText: 'Delete',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              $.ajax({
-                method: 'POST',
-                url: "<?php echo getPath($routes, 'deleteCategory') ?>".replace('{id}', id),
-                success: (function (res) {
-                  Swal.fire({
-                    title: 'Success!',
-                    text: 'Category successfully deleted!',
-                    icon: 'success',
-                    confirmButtonTeNxt: 'Cool!'
-                  }).then(() => {
-                    location.reload();
-                  })
-                }),
-              })
-            }
-          })
+          $('.delete-btn').click(function (e) {
+            let id = $(this).attr('data-category-id');
+            Swal.fire({
+              title: 'Do you want to delete this product?',
+              showCancelButton: true,
+              confirmButtonText: 'Delete',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                $.ajax({
+                  method: 'POST',
+                  url: "<?php echo getPath($routes, 'deleteCategory') ?>".replace('{id}', id),
+                  success: (function (res) {
+                    Swal.fire({
+                      title: 'Success!',
+                      text: 'Category successfully deleted!',
+                      icon: 'success',
+                      confirmButtonTeNxt: 'Cool!'
+                    }).then(() => {
+                      location.reload();
+                    })
+                  }),
+                })
+              }
+            })
 
-        })
-    <?php else: ?>
-        $('.delete-btn').click(function (e) {
-          Swal.fire({
-            title: 'Error!',
-            text: 'You don\'t have the permission to delete product!',
-            icon: 'error',
-            confirmButtonText: 'OK'
           })
-        })
+    <?php else: ?>
+          $('.delete-btn').click(function (e) {
+            Swal.fire({
+              title: 'Error!',
+              text: 'You don\'t have the permission to delete product!',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            })
+          })
     <?php endif; ?>
 
     $('#add-product-btn').click(function (e) {

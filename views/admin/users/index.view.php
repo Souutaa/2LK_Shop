@@ -4,7 +4,7 @@
       <div class="page-title-right">
         <ol class="breadcrumb m-0">
           <li class="breadcrumb-item">
-            <a href="javascript: void(0);">Techshop</a>
+            <a href="javascript: void(0);">2LKShop</a>
           </li>
           <li class="breadcrumb-item active">Customers</li>
         </ol>
@@ -23,12 +23,12 @@
             <div class="row mb-2">
               <div class="col-sm-4">
                 <?php
-                  if (in_array('U_create', $user->getPermissions())):
-                ?>
-                  <button type="button" class="btn btn-primary" id="add-user-btn" data-bs-toggle="modal"
-                    data-bs-target="#add-new-user">
-                    Add User
-                  </button>
+                if (in_array('U_create', $user->getPermissions())):
+                  ?>
+                    <button type="button" class="btn btn-primary" id="add-user-btn" data-bs-toggle="modal"
+                      data-bs-target="#add-new-user">
+                      Add User
+                    </button>
                 <?php endif ?>
               </div>
 
@@ -49,7 +49,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php require('user_list.view.php') ?>
+                  <?php require ('user_list.view.php') ?>
                 </tbody>
               </table>
             </div>
@@ -124,7 +124,7 @@
               <label for="example-select" class="form__label u-margin-bottom-small">Role</label>
               <select class="form-select" name="role-id" id="example-select">
                 <?php foreach ($roles->roles as $role): ?>
-                  <option value=<?php echo $role->getRoleId() ?>><?php echo $role->getRoleName() ?></option>
+                    <option value=<?php echo $role->getRoleId() ?>><?php echo $role->getRoleName() ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -149,7 +149,7 @@
 
   $(document).ready(function () {
 
-    const userList = <?php echo json_encode(serialize($users->userList))?>
+    const userList = <?php echo json_encode(serialize($users->userList)) ?>
 
     $('#form-Register').submit(function (e) {
       e.preventDefault();
@@ -229,48 +229,48 @@
   $user = getSessionUser();
   if (in_array('U_Delete', $user->getPermissions())):
     ?>
-    $(document).ready(function () {
-      $('.delete-btn').click(function () {
-        let username = ($(this).attr('data-user-id'))
-        Swal.fire({
-          title: 'Do you want to disable this user?',
-          showCancelButton: true,
-          icon: 'question',
-          confirmButtonText: 'Yes',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              method: 'POST',
-              url: "/2LK_Shop/admin/deactiveUser",
-              data: {
-                'username': JSON.stringify(username)
-              },
-              success: (function (res) {
-                Swal.fire({
-                  title: 'Success!',
-                  text: 'Product successfully deleted!',
-                  icon: 'success',
-                  confirmButtonTeNxt: 'Cool!'
-                }).then(() => {
-                  location.reload();
-                })
-              }),
-            })
-          }
+      $(document).ready(function () {
+        $('.delete-btn').click(function () {
+          let username = ($(this).attr('data-user-id'))
+          Swal.fire({
+            title: 'Do you want to disable this user?',
+            showCancelButton: true,
+            icon: 'question',
+            confirmButtonText: 'Yes',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                method: 'POST',
+                url: "/2LK_Shop/admin/deactiveUser",
+                data: {
+                  'username': JSON.stringify(username)
+                },
+                success: (function (res) {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'Product successfully deleted!',
+                    icon: 'success',
+                    confirmButtonTeNxt: 'Cool!'
+                  }).then(() => {
+                    location.reload();
+                  })
+                }),
+              })
+            }
+          })
         })
       })
-    })
   <?php else: ?>
-    $(document).ready(function () {
-      $('.delete-btn').click(function () {
-        Swal.fire({
-          title: 'Error!',
-          text: 'You don\'t have the permission to delete product!',
-          icon: 'error',
-          confirmButtonText: 'OK'
+      $(document).ready(function () {
+        $('.delete-btn').click(function () {
+          Swal.fire({
+            title: 'Error!',
+            text: 'You don\'t have the permission to delete product!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
         })
       })
-    })
   <?php endif ?>
 </script>
 

@@ -20,7 +20,7 @@ if (isLoggedIn()) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Techshop</title>
+  <title>2LKShop</title>
   <link href="/2LK_Shop/public/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css" />
   <link href="/2LK_Shop/public/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css" />
   <link href="/2LK_Shop/public/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
@@ -69,91 +69,91 @@ if (isLoggedIn()) {
           </li>
           <hr>
           <?php
-            if (isLoggedIn() && in_array('P_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="/2LK_Shop/admin/product" class="side-nav-link">
-                <i class="uil-briefcase"></i>
-                <span> Product </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('P_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="/2LK_Shop/admin/product" class="side-nav-link">
+                  <i class="uil-briefcase"></i>
+                  <span> Product </span>
+                </a>
+              </li>
+          <?php endif ?>
           <hr>
           <?php
-            if (isLoggedIn() && in_array('Br_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="<?php echo getPath($routes, 'adminBrands')?>" class="side-nav-link">
-                <i class="uil-tag-alt"></i>
-                <span> Brands </span>
-              </a>
-            </li> 
-          <?php endif?>
+          if (isLoggedIn() && in_array('Br_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="<?php echo getPath($routes, 'adminBrands') ?>" class="side-nav-link">
+                  <i class="uil-tag-alt"></i>
+                  <span> Brands </span>
+                </a>
+              </li> 
+          <?php endif ?>
           <hr>
           <?php
-            if (isLoggedIn() && in_array('Ca_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-            <a href="/2LK_Shop/admin/category" class="side-nav-link">
-                <i class="uil-archive-alt"></i>
-                <span> Categories </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('Ca_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+              <a href="/2LK_Shop/admin/category" class="side-nav-link">
+                  <i class="uil-archive-alt"></i>
+                  <span> Categories </span>
+                </a>
+              </li>
+          <?php endif ?>
           
           <hr>
           <?php
-            if (isLoggedIn() && in_array('Or_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="/2LK_Shop/admin/orders" class="side-nav-link">
-                <i class="uil-file-check-alt"></i>
-                <span> Orders </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('Or_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="/2LK_Shop/admin/orders" class="side-nav-link">
+                  <i class="uil-file-check-alt"></i>
+                  <span> Orders </span>
+                </a>
+              </li>
+          <?php endif ?>
 
           <hr>
           <?php
-            if (isLoggedIn() && in_array('U_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="/2LK_Shop/admin/users" class="side-nav-link">
-                <i class="uil-users-alt"></i>
-                <span> Users </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('U_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="/2LK_Shop/admin/users" class="side-nav-link">
+                  <i class="uil-users-alt"></i>
+                  <span> Users </span>
+                </a>
+              </li>
+          <?php endif ?>
           <?php
-            if (isLoggedIn() && in_array('R_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="/2LK_Shop/admin/roles" class="side-nav-link">
-                <i class="uil-sign-left"></i>
-                <span> Roles </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('R_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="/2LK_Shop/admin/roles" class="side-nav-link">
+                  <i class="uil-sign-left"></i>
+                  <span> Roles </span>
+                </a>
+              </li>
+          <?php endif ?>
           <?php
-            if (isLoggedIn() && in_array('Per_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="/2LK_Shop/admin/permissions" class="side-nav-link">
-                <i class="uil-layers"></i>
-                <span> Permissions </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('Per_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="/2LK_Shop/admin/permissions" class="side-nav-link">
+                  <i class="uil-layers"></i>
+                  <span> Permissions </span>
+                </a>
+              </li>
+          <?php endif ?>
           <?php
-            if (isLoggedIn() && in_array('PerGr_View', $user->getPermissions())):
-          ?>
-            <li class="side-nav-item">
-              <a href="/2LK_Shop/admin/permissionGroups" class="side-nav-link">
-                <i class="uil-layer-group"></i>
-                <span> Permission Groups </span>
-              </a>
-            </li>
-          <?php endif?>
+          if (isLoggedIn() && in_array('PerGr_View', $user->getPermissions())):
+            ?>
+              <li class="side-nav-item">
+                <a href="/2LK_Shop/admin/permissionGroups" class="side-nav-link">
+                  <i class="uil-layer-group"></i>
+                  <span> Permission Groups </span>
+                </a>
+              </li>
+          <?php endif ?>
 
         </ul>
 
@@ -195,8 +195,8 @@ if (isLoggedIn()) {
                   <img src="/2LK_Shop/public/images/productImg/Image.png" alt="user-image" class="rounded-circle" />
                 </span>
                 <span>
-                  <span class="account-user-name"><?php echo $user->getUsername()?></span>
-                  <span class="account-position"><?php echo $user->getUserGroup()?></span>
+                  <span class="account-user-name"><?php echo $user->getUsername() ?></span>
+                  <span class="account-position"><?php echo $user->getUserGroup() ?></span>
                 </span>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -221,7 +221,7 @@ if (isLoggedIn()) {
 
         <!-- Start Content-->
         <div class="container-fluid">
-          <?php require("$name.view.php") ?>
+          <?php require ("$name.view.php") ?>
         </div>
         <!-- container -->
       </div>
@@ -235,7 +235,7 @@ if (isLoggedIn()) {
               <script>
                 document.write(new Date().getFullYear());
               </script>
-              © Techshop - Team01 SGU
+              © 2LKShop - Team01 SGU
             </div>
             <div class="col-md-6">
               <div class="text-md-end footer-links d-none d-md-block">

@@ -6,7 +6,7 @@
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <li class="breadcrumb-item">
-                <a href="javascript: void(0);">Techshop</a>
+                <a href="javascript: void(0);">2LKShop</a>
               </li>
 
               <li class="breadcrumb-item active">Brand</li>
@@ -25,12 +25,12 @@
             <div class="row mb-2">
               <div class="col-sm-4">
                 <?php
-                  if (isLoggedIn() && in_array('Br_Create', $user->getPermissions())):
-                ?>
-                  <button type="button" class="btn btn-primary" id="add-product-btn" data-bs-toggle="modal"
-                    data-bs-target="#add-new-brand">
-                    Add brand
-                  </button>
+                if (isLoggedIn() && in_array('Br_Create', $user->getPermissions())):
+                  ?>
+                    <button type="button" class="btn btn-primary" id="add-product-btn" data-bs-toggle="modal"
+                      data-bs-target="#add-new-brand">
+                      Add brand
+                    </button>
                 <?php endif ?>
               </div>
 
@@ -51,31 +51,31 @@
                 </thead>
                 <tbody>
                   <?php foreach ($BrandList->brandList as $brand): ?>
-                    <?php if ($brand->getDeleteAt() == null): ?>
-                    <tr>
-                      <td><?php echo $brand->getId() ?></td>
-                      <td><?php echo $brand->getName() ?></td>
-                      <td class="table-action">
-                        <?php
-                          if (isLoggedIn() && in_array('Br_Edit', $user->getPermissions())):
-                        ?>
-                          <button type="button" class="action-icon btn" data-bs-toggle="modal"
-                            data-bs-target="#change-brand" 
-                            data-brand-id="<?php echo $brand->getId() ?>">
-                            <i class="mdi mdi-square-edit-outline"></i>
-                          </button>
-                        <?php endif ?>
-                        <?php
-                          if (isLoggedIn() && in_array('Br_Delete', $user->getPermissions())):
-                        ?>
-                          <button type="button" class="action-icon btn delete-btn"
-                            data-brand-id="<?php echo $brand->getId() ?>">
-                            <i class="mdi mdi-delete"></i>
-                          </button>
-                        <?php endif ?>
-                      </td>
-                    </tr>
-                    <?php endif ?>
+                      <?php if ($brand->getDeleteAt() == null): ?>
+                        <tr>
+                          <td><?php echo $brand->getId() ?></td>
+                          <td><?php echo $brand->getName() ?></td>
+                          <td class="table-action">
+                            <?php
+                            if (isLoggedIn() && in_array('Br_Edit', $user->getPermissions())):
+                              ?>
+                                <button type="button" class="action-icon btn" data-bs-toggle="modal"
+                                  data-bs-target="#change-brand" 
+                                  data-brand-id="<?php echo $brand->getId() ?>">
+                                  <i class="mdi mdi-square-edit-outline"></i>
+                                </button>
+                            <?php endif ?>
+                            <?php
+                            if (isLoggedIn() && in_array('Br_Delete', $user->getPermissions())):
+                              ?>
+                                <button type="button" class="action-icon btn delete-btn"
+                                  data-brand-id="<?php echo $brand->getId() ?>">
+                                  <i class="mdi mdi-delete"></i>
+                                </button>
+                            <?php endif ?>
+                          </td>
+                        </tr>
+                      <?php endif ?>
                   <?php endforeach ?>
                 </tbody>
               </table>
@@ -132,7 +132,7 @@
 
 <script>
   $(document).ready(() => {
-    const brandList = '<?php echo json_encode(serialize($BrandList))?>';
+    const brandList = '<?php echo json_encode(serialize($BrandList)) ?>';
     $('#create-form').submit(function (e) {
       e.preventDefault();
       var formData = new FormData(this);
@@ -193,41 +193,41 @@ $(document).ready(function () {
     <?php
     if (isLoggedIn() && in_array('Br_Delete', $user->getPermissions())):
       ?>
-      $('.delete-btn').click(function (e) {
-        let id = $(this).attr('data-brand-id');
-        Swal.fire({
-          title: 'Do you want to delete this product?',
-          showCancelButton: true,
-          confirmButtonText: 'Delete',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              method: 'POST',
-              url: "<?php echo getPath($routes, 'deleteBrand') ?>".replace('{id}', id),
-              success: (function (res) {
-                Swal.fire({
-                  title: 'Success!',
-                  text: 'Brand successfully deleted!',
-                  icon: 'success',
-                  confirmButtonTeNxt: 'Cool!'
-                }).then(() => {
-                  location.reload();
-                })
-              }),
-            })
-          }
-        })
+        $('.delete-btn').click(function (e) {
+          let id = $(this).attr('data-brand-id');
+          Swal.fire({
+            title: 'Do you want to delete this product?',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+                method: 'POST',
+                url: "<?php echo getPath($routes, 'deleteBrand') ?>".replace('{id}', id),
+                success: (function (res) {
+                  Swal.fire({
+                    title: 'Success!',
+                    text: 'Brand successfully deleted!',
+                    icon: 'success',
+                    confirmButtonTeNxt: 'Cool!'
+                  }).then(() => {
+                    location.reload();
+                  })
+                }),
+              })
+            }
+          })
 
-      })
-    <?php else: ?>
-      $('.delete-btn').click(function (e) {
-        Swal.fire({
-          title: 'Error!',
-          text: 'You don\'t have the permission to delete product!',
-          icon: 'error',
-          confirmButtonText: 'OK'
         })
-      })
+    <?php else: ?>
+        $('.delete-btn').click(function (e) {
+          Swal.fire({
+            title: 'Error!',
+            text: 'You don\'t have the permission to delete product!',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
+        })
     <?php endif; ?>
   })
 

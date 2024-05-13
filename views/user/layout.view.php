@@ -190,7 +190,7 @@ if (isLoggedIn()) {
         </div>
         <div class="footer__right">
           <div class="footer__contact">
-            <h3 class="heading__territory u-margin-bottom-big">Techshop</h3>
+            <h3 class="heading__territory u-margin-bottom-big">2LKShop</h3>
 
             <a href="#" class="para--sm text--hover u-margin-bottom-small">About Us</a>
             <a href="#" class="para--sm text--hover u-margin-bottom-small">Contact Us</a>
@@ -203,15 +203,15 @@ if (isLoggedIn()) {
             <a href="#" class="para--sm text--hover u-margin-bottom-small">Privacy Policy</a>
           </div>
           <div class="footer__contact">
-            <h3 class="heading__territory u-margin-bottom-big">Techshop</h3>
+            <h3 class="heading__territory u-margin-bottom-big">2LKShop</h3>
 
-            <a href="#" class="para--sm text--hover u-margin-bottom-small">support@techshop.com</a>
+            <a href="#" class="para--sm text--hover u-margin-bottom-small">support@2LKShop.com</a>
             <a href="#" class="para--sm text--hover u-margin-bottom-small">The
             </a>
           </div>
         </div>
         <div class="copyright u-margin-top-big">
-          &copy; 2023. All rights reserved
+          &copy; 2024. All rights reserved
         </div>
       </div>
     </footer>

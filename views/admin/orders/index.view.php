@@ -6,7 +6,7 @@
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
             <li class="breadcrumb-item">
-              <a href="javascript: void(0);">TechShop</a>
+              <a href="javascript: void(0);">2LKShop</a>
             </li>
 
             <li class="breadcrumb-item active">Orders</li>
@@ -56,7 +56,7 @@
               </tr>
             </thead>
             <tbody id="user-order__list">
-              <?php require("order_list.view.php")?>
+              <?php require ("order_list.view.php") ?>
             </tbody>
           </table>
         </div>
